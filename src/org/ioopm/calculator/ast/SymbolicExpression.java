@@ -2,7 +2,7 @@ package org.ioopm.calculator.ast;
 
 public abstract class SymbolicExpression {
     private String name; 
-    private String[] subExpressions;
+    private SymbolicExpression[] subExpressions;
     
     /// The second argument allows us to pass in 0 or more arguments
     public SymbolicExpression(String name, Object... subExpressions) {
