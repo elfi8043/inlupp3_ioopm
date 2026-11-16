@@ -8,7 +8,7 @@ public class Calculator {
         System.out.println("Welcome to the parser!");
         System.out.print("Please enter an expression: ");
 
-        try {
+        try { 
             double result = p.expression();
             System.out.println("result: " + result);
         } catch(SyntaxErrorException e) {
