@@ -1,5 +1,9 @@
 package org.ioopm.calculator.ast;
 
 public abstract class Atom extends SymbolicExpression{
-    private String name;
+
+    public Atom(String name, Object... subExpressions)
+    {
+        super(name, subExpressions);
+    }
 }
