@@ -1,4 +1,4 @@
-package inluppar.inlupp3.src.org.ioopm.ast;
+package org.ioopm.calculator.ast;
 
 public class Variable {
     private String identifier;

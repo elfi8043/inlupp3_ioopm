@@ -1,4 +1,4 @@
-package inluppar.inlupp3.src.org.ioopm.ast;
+package org.ioopm.calculator.ast;
 
 public abstract class Unary extends SymbolicExpression {
     private String functionName;

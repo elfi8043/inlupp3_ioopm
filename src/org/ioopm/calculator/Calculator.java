@@ -1,4 +1,4 @@
-package inluppar.inlupp3.src.org.ioopm.calculator; 
+package org.ioopm.calculator; 
 import java.io.IOException;
 
 public class Calculator {
