@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
 public class Sin extends Unary {
-    private String Name;
+    public Sin(String name, SymbolicExpression arg) {
+        super(name, arg);
+    }
 }
