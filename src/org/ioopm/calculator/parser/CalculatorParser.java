@@ -214,7 +214,7 @@ public class CalculatorParser {
     private SymbolicExpression primary() throws IOException {
         SymbolicExpression result;
         if (this.st.ttype == '(') {
-            this.st.nextToken();
+            this.st.nextToken(); // (x + 5) 
             result = assignment();
             /// This captures unbalanced parentheses!
             if (this.st.nextToken() != ')') {
