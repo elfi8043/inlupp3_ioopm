@@ -7,4 +7,8 @@ public class Variable extends Atom {
         this.id = id;
         super("Var");
     }
+
+    public String toString(){
+        return id;
+    }
 }

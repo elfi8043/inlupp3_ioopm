@@ -5,4 +5,9 @@ public class Addition extends Binary {
     {
         super("+", lhs, rhs);
     }
+
+    @Override 
+    public String getName() {
+        return "+";
+    }
 }
