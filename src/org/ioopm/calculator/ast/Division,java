@@ -4,4 +4,14 @@ public class Division extends Binary {
     public Division(SymbolicExpression lhs, SymbolicExpression rhs) {
         super("/", lhs, rhs);
     }
+
+    @Override 
+    public String getName() {
+        return "/";
+    }
+
+    @Override 
+    public int getPriority() {
+        return 100;
+    }
 }

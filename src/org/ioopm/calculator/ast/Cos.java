@@ -4,4 +4,9 @@ public class Cos extends Unary {
     public Cos(SymbolicExpression arg) {
         super("Cos", arg);
     }
+
+    @Override 
+    public String getName() {
+        return "cos";
+    }
 }

@@ -27,4 +27,18 @@ public abstract class SymbolicExpression {
         sb.append(")");
         return sb.toString(); 
     }
+
+    public bool isConstant() {
+        return false;
+    }
+
+    public String getName() {
+        throw new RuntimeException("getName() called on expression with no operator");
+    }
+
+    public int getPriority() {
+        return 50;
+    }
+
+    
 }
