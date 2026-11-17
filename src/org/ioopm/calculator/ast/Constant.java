@@ -9,8 +9,17 @@ public class Constant extends Atom {
     }
 
     @Override 
-    public bool isConstant() {
+    public boolean isConstant() {
         return true;
+    }
+
+    @Override 
+    public double getValue() {
+    return this.value;
+    }
+
+    public String toString() {
+        return String.valueOf(this.value);
     }
 }   
 

@@ -158,7 +158,7 @@ public class CalculatorParser {
      * @return a SymbolicExpression to be evaluated
      * @throws IOException by nextToken() if it reads invalid input
      */
-    private SymbolicExpression expression() throws IOException {
+    public SymbolicExpression expression() throws IOException {
         SymbolicExpression result = term();
         this.st.nextToken();
         while (this.st.ttype == ADDITION || this.st.ttype == SUBTRACTION) {

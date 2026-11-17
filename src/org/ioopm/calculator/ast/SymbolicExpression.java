@@ -1,8 +1,8 @@
 package org.ioopm.calculator.ast;
 
 public abstract class SymbolicExpression {
-    private String name; 
-    private SymbolicExpression[] subExpressions;
+    public String name; 
+    private String[] subExpressions;
     
     /// The second argument allows us to pass in 0 or more arguments
     public SymbolicExpression(String name, Object... subExpressions) {
@@ -18,7 +18,7 @@ public abstract class SymbolicExpression {
         StringBuilder sb = new StringBuilder();
         sb.append(this.name);
         sb.append("(");
-        for (int i = 1; i < this.subExpressions.length; ++i) {
+        for (int i = 0; i < this.subExpressions.length; ++i) {
             sb.append(this.subExpressions[i]);
             if (i + 1 < subExpressions.length) {
                 sb.append(", ");
@@ -28,7 +28,7 @@ public abstract class SymbolicExpression {
         return sb.toString(); 
     }
 
-    public bool isConstant() {
+    public boolean isConstant() {
         return false;
     }
 
@@ -40,5 +40,8 @@ public abstract class SymbolicExpression {
         return 50;
     }
 
+    public double getValue() {
+    throw new RuntimeException("getValue() called on expression that is not a constant");
+    }
     
 }
