@@ -27,7 +27,14 @@ public class Test {
         this.testPrinting("sin 3.0", sin);
     }
 
+    public void t3() {
+        Constant c1 = new Constant(3);
+        Constant c2 = new Constant(2);
+        Addition bin = new Addition(c1, c2);
+        this.testPrinting("3 + 2", bin);
+    }
+
     public void main() {
-        this.t2();
+        this.t3();
     }
 }

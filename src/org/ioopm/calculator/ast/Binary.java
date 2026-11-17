@@ -7,4 +7,8 @@ public abstract class Binary extends SymbolicExpression {
     public Binary(String name, SymbolicExpression lhs, SymbolicExpression rhs) {
         super(name, lhs, rhs);
     }
-}
+
+    public String toString(){
+        return lhs.toString() + " " + this.getName() + " " + rhs.toString();
+    }
+}   
