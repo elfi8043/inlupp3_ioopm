@@ -29,6 +29,11 @@ public class Variable extends Atom {
 
     @Override 
     public Variable eval(HashMap<Variable, SymbolicExpression> vars) {
-        return this;
+        SymbolicExpression val = vars.get(this);
+        if (val != null) {
+            return val; //this Variable(this)
+        } else {
+            return this;
+        }
     }
 }
