@@ -12,6 +12,15 @@ public class Test {
         }
     }
 
+    public void testEvaluating(SymbolicExpression expected, SymbolicExpression e) {
+        SymbolicExpression r = e.eval();
+        if (r.equals(expected)) {
+            System.out.println("Passed: " + e);
+        } else {
+            System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
+        }
+    }
+
     public void t1() {
         Constant c1 = new Constant(5);
         Constant c2 = new Constant(2);
@@ -52,7 +61,14 @@ public class Test {
         this.testPrinting("a + b * c - d / a - c + d + b", d1);
     }
 
+    public void t5() {
+        
+    }
+
     public void main() {
+        this.t1();
+        this.t2();
+        this.t3();
         this.t4();
     }
 }
