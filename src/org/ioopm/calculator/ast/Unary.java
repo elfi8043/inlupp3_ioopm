@@ -32,4 +32,8 @@ public abstract class Unary extends SymbolicExpression {
             return false;
         }
     }
+
+    public SymbolicExpression getArg() {
+        return this.arg;
+    }
 }

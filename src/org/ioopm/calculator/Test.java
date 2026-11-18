@@ -62,7 +62,15 @@ public class Test {
     }
 
     public void t5() {
-        
+        Constant c1 = new Constant(3);
+        Constant c2 = new Constant(5);
+        Addition a1 = new Addition(c1, c2);
+
+        Constant c3 = new Constant(3);
+        Constant c4 = new Constant(5);
+        Addition a2 = new Addition(c3, c4);
+
+        Sin s1 = new Sin(a1);
     }
 
     public void main() {

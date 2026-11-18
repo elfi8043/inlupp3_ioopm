@@ -9,4 +9,13 @@ public class Log extends Unary {
     public String getName() {
         return "log";
     }
+
+    public SymbolicExpression eval() {
+        SymbolicExpression arg = super.getArg().eval();
+        if (arg.isConstant()) {
+            return new Constant(Math.log(arg.getValue()));
+        } else {
+            return new Log(arg);
+        }
+    }
 }

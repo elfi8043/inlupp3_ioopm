@@ -44,4 +44,5 @@ public abstract class SymbolicExpression {
         throw new RuntimeException("getValue() called on expression that is not a constant");
     }
     
+    public abstract SymbolicExpression eval();
 }

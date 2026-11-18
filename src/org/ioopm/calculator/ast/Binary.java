@@ -31,4 +31,13 @@ public abstract class Binary extends SymbolicExpression {
             return false;
         }
     }
+
+    public SymbolicExpression getLhs() {
+        return lhs;
+    }
+
+    public SymbolicExpression getRhs() {
+        return rhs;
+    }
 }   
+
