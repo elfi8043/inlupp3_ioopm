@@ -45,5 +45,9 @@ public abstract class SymbolicExpression {
         throw new RuntimeException("getValue() called on expression that is not a constant");
     }
     
-    public abstract SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars);
+    public abstract SymbolicExpression eval(Environment vars);
+
+    public boolean isCommand() {
+        return false;
+    }
 }

@@ -14,7 +14,7 @@ public class Subtraction extends Binary {
     }
 
     @Override 
-    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+    public SymbolicExpression eval(Environment vars) {
         SymbolicExpression lhs = super.getLhs().eval(vars);
         SymbolicExpression rhs = super.getRhs().eval(vars);
         if (lhs.isConstant() && rhs.isConstant()) {

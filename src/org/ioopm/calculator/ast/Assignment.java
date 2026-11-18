@@ -12,16 +12,17 @@ public class Assignment extends Binary {
         super("=", lhs, rhs);
     }
 
-    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars)
-    {
-        if (super.getRhs().eval(vars) instanceof Variable) {
+    public SymbolicExpression eval(Environment vars) {
+        if (super.getRhs() instanceof Variable) {
             Variable rhs = (Variable) super.getRhs();
-            vars.put(rhs, super.getLhs().eval(vars));
-        }
 
-        else {
-            throw new RuntimeErrorException("Can't assign two constants.");
+            SymbolicExpression value = super.getLhs().eval(vars);
+
+            vars.put(rhs, value);
+
+            return value;
+        } else {
+            throw new IllegalArgumentException("Can't assign to a non-variable.");
         }
-            
     }
 }

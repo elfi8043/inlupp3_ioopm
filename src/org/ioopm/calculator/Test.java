@@ -1,5 +1,6 @@
 package org.ioopm.calculator; 
 import org.ioopm.calculator.ast.*;
+import org.ioopm.calculator.ast.Constant;
 
 import java.io.IOException;
 
@@ -12,10 +13,10 @@ public class Test {
         }
     }
 
-    public void testEvaluating(SymbolicExpression expected, SymbolicExpression e) {
-        SymbolicExpression r = e.eval();
+    public void testEvaluating(SymbolicExpression expected, SymbolicExpression e, Environment vars) {
+        SymbolicExpression r = e.eval(vars);
         if (r.equals(expected)) {
-            System.out.println("Passed: " + e);
+            System.out.println("Passed: " + r);
         } else {
             System.out.println("Error: expected '" + expected + "' but got '" + e + "'");
         }
@@ -73,10 +74,196 @@ public class Test {
         Sin s1 = new Sin(a1);
     }
 
+    public void t6_const_add() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(5);
+        Constant c2 = new Constant(6);
+        Addition a1 = new Addition(c1, c2);
+
+        Constant res = new Constant(11);
+
+        testEvaluating(res, a1, vars);
+    }
+
+    public void t7_const_sub() {
+    Environment vars = new Environment();
+    Constant c1 = new Constant(10);
+    Constant c2 = new Constant(4);
+    Subtraction s1 = new Subtraction(c1, c2);
+
+    Constant res = new Constant(6);
+
+    testEvaluating(res, s1, vars);
+    }
+
+    public void t8_const_mult() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(5);
+        Constant c2 = new Constant(6);
+        Multiplication m1 = new Multiplication(c1, c2);
+
+        Constant res = new Constant(30);
+
+        testEvaluating(res, m1, vars);
+    }
+
+    public void t9_const_div() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(12);
+        Constant c2 = new Constant(3);
+        Division d1 = new Division(c1, c2);
+
+        Constant res = new Constant(4);
+
+        testEvaluating(res, d1, vars);
+    }
+
+    public void t10_const_sin() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(0);
+        Sin s1 = new Sin(c1);
+
+        Constant res = new Constant(0);
+
+        testEvaluating(res, s1, vars);
+    }
+
+    public void t11_const_cos() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(0);
+        Cos cos1 = new Cos(c1);
+
+        Constant res = new Constant(1);
+
+        testEvaluating(res, cos1, vars);
+    }
+
+    public void t12_const_log() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(1);
+        Log l1 = new Log(c1);
+
+        Constant res = new Constant(0);
+
+        testEvaluating(res, l1, vars);
+    }
+
+    public void t13_const_exp() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(0);
+        Exp e1 = new Exp(c1);
+
+        Constant res = new Constant(1);
+
+        testEvaluating(res, e1, vars);
+    }
+
+    public void t14_const_neg() {
+        Environment vars = new Environment();
+        Constant c1 = new Constant(5);
+        Negate n1 = new Negate(c1);
+
+        Constant res = new Constant(-5);
+
+        testEvaluating(res, n1, vars);
+    }
+
+    public void t15_assign_variable() {
+        log("t16_assign_variable");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+        Constant c1 = new Constant(10);
+
+        Assignment a1 = new Assignment(c1, x);
+
+        testEvaluating(new Constant(10), a1, vars);
+        testEvaluating(new Constant(10), x, vars);
+    }
+
+    public void t17_reassign_variable() {
+        log("t17_reassign_var");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+
+        Assignment a1 = new Assignment(new Constant(10), x);
+        Assignment a2 = new Assignment(new Constant(20), x);
+
+        testEvaluating(new Constant(10), a1, vars);
+        testEvaluating(new Constant(20), a2, vars);
+        testEvaluating(new Constant(20), x, vars);
+    }
+
+    public void t18_assign_variable_to_variable() {
+        log("t18_assign_variable_to_variable");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+        Variable y = new Variable("y");
+
+        Assignment a1 = new Assignment(new Constant(10), x);
+        Assignment a2 = new Assignment(x, y);
+
+        testEvaluating(new Constant(10), a1, vars);
+        testEvaluating(new Constant(10), a2, vars);
+        testEvaluating(new Constant(10), y, vars);
+    }
+
+    public void t19_assign_expression() {
+        log("t19 assign expression");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+        Variable y = new Variable("y");
+
+        Assignment a1 = new Assignment(new Constant(10), x);
+        Addition add = new Addition(x, new Constant(5));
+        Assignment a2 = new Assignment(add, y);
+
+        testEvaluating(new Constant(10), a1, vars);
+        testEvaluating(new Constant(15), a2, vars);
+        testEvaluating(new Constant(15), y, vars);
+    }
+
+    public void t20_variable_substitution() {
+        log("t20 variable substitution");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+        Variable y = new Variable("y");
+
+        Assignment a1 = new Assignment(new Constant(10), x);
+        Addition add = new Addition(x, y);
+
+        testEvaluating(new Constant(10), a1, vars);
+        testEvaluating(new Addition(new Constant(10), y), add, vars);
+    }
+
+    public void t21_symbolic_assignment() {
+        log("t21 symbolic assignment");
+        Environment vars = new Environment();
+
+        Variable x = new Variable("x");
+        Variable y = new Variable("y");
+
+        Addition add = new Addition(x, new Constant(5));
+        Assignment a1 = new Assignment(add, y);
+
+        testEvaluating(add, a1, vars);
+        testEvaluating(add, y, vars);
+    }
+
+    public void log(String msg) {
+        System.out.println(msg);
+    }
+
     public void main() {
-        this.t1();
-        this.t2();
-        this.t3();
-        this.t4();
+        t15_assign_variable();
+        t17_reassign_variable();
+        t18_assign_variable_to_variable();
+        t19_assign_expression();
+        t20_variable_substitution();
+        t21_symbolic_assignment();
     }
 }

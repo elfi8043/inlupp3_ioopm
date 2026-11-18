@@ -13,7 +13,7 @@ public class Sin extends Unary {
         return "sin";
     }
 
-    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+    public SymbolicExpression eval(Environment vars) {
         SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(Math.sin(arg.getValue()));

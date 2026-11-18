@@ -12,7 +12,7 @@ public class Log extends Unary {
         return "log";
     }
 
-    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+    public SymbolicExpression eval(Environment vars) {
         SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(Math.log(arg.getValue()));

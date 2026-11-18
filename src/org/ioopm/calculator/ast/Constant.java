@@ -38,7 +38,7 @@ public class Constant extends Atom {
     }
 
     @Override 
-    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+    public SymbolicExpression eval(Environment vars) {
         return this;
     }
 }   
