@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 import javax.management.RuntimeErrorException;
 
 import org.ioopm.calculator.ast.SymbolicExpression;
@@ -12,7 +14,7 @@ public abstract class Command extends SymbolicExpression {
     }
 
     @Override
-    public SymbolicExpression eval() {
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
         throw new RuntimeErrorException("A command can not be evaluated");
     }
 } 

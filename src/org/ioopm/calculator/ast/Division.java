@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public class Division extends Binary {
     public Division(SymbolicExpression lhs, SymbolicExpression rhs) {
         super("/", lhs, rhs);
@@ -16,9 +18,9 @@ public class Division extends Binary {
     }
 
     @Override
-    public SymbolicExpression eval() {
-        SymbolicExpression lhs = super.getLhs().eval();
-        SymbolicExpression rhs = super.getRhs().eval();
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+        SymbolicExpression lhs = super.getLhs().eval(vars);
+        SymbolicExpression rhs = super.getRhs().eval(vars);
 
         if (lhs.isConstant() && rhs.isConstant()) {
             return new Constant(lhs.getValue() / rhs.getValue());

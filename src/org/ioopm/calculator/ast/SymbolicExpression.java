@@ -1,4 +1,5 @@
 package org.ioopm.calculator.ast;
+import java.util.HashMap;
 
 public abstract class SymbolicExpression {
     public String name; 
@@ -44,5 +45,5 @@ public abstract class SymbolicExpression {
         throw new RuntimeException("getValue() called on expression that is not a constant");
     }
     
-    public abstract SymbolicExpression eval();
+    public abstract SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars);
 }

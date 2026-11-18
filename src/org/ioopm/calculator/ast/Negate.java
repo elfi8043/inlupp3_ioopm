@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public abstract class Negate extends Unary {
     public Negate(SymbolicExpression arg) {
         super("neg", arg);
@@ -10,8 +12,8 @@ public abstract class Negate extends Unary {
         return "neg";
     }
 
-    public SymbolicExpression eval() {
-        SymbolicExpression arg = super.getArg().eval();
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+        SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(0 - (arg.getValue()));
         } else {

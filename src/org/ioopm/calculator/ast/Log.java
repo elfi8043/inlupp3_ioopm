@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public class Log extends Unary {
     public Log(SymbolicExpression arg) {
         super("log", arg);
@@ -10,8 +12,8 @@ public class Log extends Unary {
         return "log";
     }
 
-    public SymbolicExpression eval() {
-        SymbolicExpression arg = super.getArg().eval();
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+        SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(Math.log(arg.getValue()));
         } else {

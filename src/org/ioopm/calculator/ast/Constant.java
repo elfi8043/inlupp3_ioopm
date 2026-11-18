@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public class Constant extends Atom {
     private double value;
 
@@ -36,7 +38,7 @@ public class Constant extends Atom {
     }
 
     @Override 
-    public SymbolicExpression eval() {
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
         return this;
     }
 }   

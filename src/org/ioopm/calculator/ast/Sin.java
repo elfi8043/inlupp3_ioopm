@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public class Sin extends Unary {
 
     public Sin(SymbolicExpression arg) {
@@ -11,8 +13,8 @@ public class Sin extends Unary {
         return "sin";
     }
 
-    public SymbolicExpression eval() {
-        SymbolicExpression arg = super.getArg().eval();
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+        SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(Math.sin(arg.getValue()));
         } else {

@@ -1,5 +1,7 @@
 package org.ioopm.calculator.ast;
 
+import java.util.HashMap;
+
 public class Cos extends Unary {
     public Cos(SymbolicExpression arg) {
         super("Cos", arg);
@@ -10,8 +12,8 @@ public class Cos extends Unary {
         return "cos";
     }
 
-    public SymbolicExpression eval() {
-        SymbolicExpression arg = super.getArg().eval();
+    public SymbolicExpression eval(HashMap<Variable, SymbolicExpression> vars) {
+        SymbolicExpression arg = super.getArg().eval(vars);
         if (arg.isConstant()) {
             return new Constant(Math.cos(arg.getValue()));
         } else {
