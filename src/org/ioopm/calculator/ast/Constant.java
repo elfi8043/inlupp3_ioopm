@@ -34,5 +34,10 @@ public class Constant extends Atom {
         /// access a private field of other!
         return this.value == other.value;
     }
+
+    @Override 
+    public SymbolicExpression eval() {
+        return this;
+    }
 }   
 

@@ -24,4 +24,9 @@ public class Variable extends Atom {
         /// access a private field of other!
         return this.id.equals(other.id);
     }
+
+    @Override 
+    public Variable eval() {
+        return this;
+    }
 }
