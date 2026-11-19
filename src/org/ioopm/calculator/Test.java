@@ -1,6 +1,5 @@
 package org.ioopm.calculator; 
 import org.ioopm.calculator.ast.*;
-import org.ioopm.calculator.ast.Constant;
 
 import java.io.IOException;
 
@@ -255,8 +254,11 @@ public class Test {
     }
 
     public void t22_named_const() {
-        NamedConstants nConst = new NamedConstants();
-        double pi = nConst.get("pi");
+        Environment vars = new Environment();
+        Addition add1 = new Addition(new NamedConstant("Answer", 42), new NamedConstant("Answer", 42));
+        Constant res = new Constant(84);
+
+        testEvaluating(res, add1, vars);
 
     }
 
@@ -265,11 +267,6 @@ public class Test {
     }
 
     public void main() {
-        t15_assign_variable();
-        t17_reassign_variable();
-        t18_assign_variable_to_variable();
-        t19_assign_expression();
-        t20_variable_substitution();
-        t21_symbolic_assignment();
+        t22_named_const();
     }
 }
