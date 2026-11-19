@@ -10,14 +10,12 @@ public class Constant extends Atom {
         this.value = num;
     }
 
-    @Override 
     public boolean isConstant() {
         return true;
     }
 
-    @Override 
     public double getValue() {
-    return this.value;
+        return this.value;
     }
 
     public String toString() {
@@ -37,7 +35,7 @@ public class Constant extends Atom {
         return this.value == other.value;
     }
 
-    @Override 
+
     public SymbolicExpression eval(Environment vars) {
         return this;
     }
