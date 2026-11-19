@@ -254,6 +254,12 @@ public class Test {
         testEvaluating(add, y, vars);
     }
 
+    public void t22_named_const() {
+        NamedConstants nConst = new NamedConstants();
+        double pi = nConst.get("pi");
+
+    }
+
     public void log(String msg) {
         System.out.println(msg);
     }

@@ -22,7 +22,7 @@ public class Assignment extends Binary {
 
             return value;
         } else {
-            throw new IllegalArgumentException("Can't assign to a non-variable.");
+            throw new IllegalAssignmentException("Can't assign to a non-variable.");
         }
     }
 }
