@@ -252,7 +252,7 @@ public class CalculatorParser {
         String operation = st.sval;
         this.st.nextToken();
         if (operationNeg == NEGATION || operation.equals(NEG)) {
-            result = new Negation(primary());
+            result = new Negate(primary());
         } else if (operation.equals(SIN)) {
             result = new Sin(primary());
         } else if (operation.equals(COS)) {
