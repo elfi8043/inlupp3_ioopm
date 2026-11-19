@@ -37,5 +37,11 @@ public class NamedConstant extends Atom{
             return false;
         }
     }
+
+    @Override
+    public int hashCode()
+    {
+        return this.name.hashCode();
+    }
     
 }

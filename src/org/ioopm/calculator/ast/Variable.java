@@ -36,4 +36,10 @@ public class Variable extends Atom {
             return this;
         }
     }
+
+    @Override
+    public int hashCode()
+    {
+        return this.id.hashCode();
+    }
 }
