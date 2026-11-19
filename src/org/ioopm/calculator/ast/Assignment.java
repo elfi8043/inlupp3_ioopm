@@ -21,6 +21,8 @@ public class Assignment extends Binary {
             vars.put(rhs, value);
 
             return value;
+        } else if (super.getRhs() instanceof NamedConstant) {
+            throw new IllegalAssignmentException("Can't reassign a named variable.");
         } else {
             throw new IllegalAssignmentException("Can't assign to a non-variable.");
         }

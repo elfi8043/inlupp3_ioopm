@@ -8,7 +8,7 @@ public class NamedConstants {
     static {
         NamedConstants.namedConstants.put("pi", Math.PI);
         NamedConstants.namedConstants.put("e",  Math.E);
-        NamedConstants.namedConstants.put("Answer", 42);
+        NamedConstants.namedConstants.put("Answer", 42.0);
         NamedConstants.namedConstants.put("L", 6.02214087 * Math.pow(10, 23));
     }
 }
