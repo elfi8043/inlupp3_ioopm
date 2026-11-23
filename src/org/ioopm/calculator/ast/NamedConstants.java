@@ -1,7 +1,10 @@
 package org.ioopm.calculator.ast;
 
 import java.util.HashMap;
-
+/**
+ * NamedConstants
+ * HashMap mapping String names of named constants to their values.
+ */
 public class NamedConstants {
     public static final HashMap<String, Double> namedConstants = new HashMap<>();
 

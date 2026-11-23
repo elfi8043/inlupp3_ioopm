@@ -9,6 +9,7 @@ public class Calculator {
     public static void main(String[] args) throws IOException {
         CalculatorParser p = new CalculatorParser();
         Environment vars = new Environment();
+        Variable answer = new Variable("ans");
 
         while (true) {
             System.out.print("$> ");
@@ -30,6 +31,7 @@ public class Calculator {
                 }
                 // Not a command -> eval expression and print
                 SymbolicExpression ans = res.eval(vars);
+                vars.put(answer, ans);
                 System.out.println(ans);
 
             } catch (RuntimeException e) {
